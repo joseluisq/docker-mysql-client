@@ -25,6 +25,13 @@ mysqlshow
 
 For more details see official [MySQL 8 Client Programs](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) documentation.
 
+## Usage
+
+```sh
+docker run -it --rm joseluisq/mysql-client mysql --version
+# mysql  Ver 8.0.28 for Linux on x86_64 (MySQL Community Server - GPL)
+```
+
 ## User privileges
 
 - Default user (unprivileged) is `mysql`.
