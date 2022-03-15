@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+FILE_ENV=$1
+
+if [[ -z "$FILE_ENV" ]]; then
+    ___mysqlexport.sh
+    exit 0
+fi
+
+if [[ -f $FILE_ENV ]]; then
+    enve -f $FILE_ENV ___mysqlexport.sh
+else
+    echo "ERROR: env file \`$FILE_ENV\` was not found"
+    exit 1
+fi

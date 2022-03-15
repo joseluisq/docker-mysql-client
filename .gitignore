@@ -1,0 +1,13 @@
+*.~
+**/*.tgz
+**/*.gz
+**/*.zip
+**/*.gzip
+**/*.log
+**/*.tar
+**/*.sql
+**/.DS_Store
+*.env
+
+!mysql_exporter.env
+!mysql_importer.env
