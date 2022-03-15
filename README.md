@@ -1,4 +1,4 @@
-# Docker MySQL 8 Client ![Docker Image Size](https://img.shields.io/docker/image-size/joseluisq/static-web-server/2) ![Docker Image Version](https://img.shields.io/docker/v/joseluisq/static-web-server/2) ![Docker Pulls](https://img.shields.io/docker/pulls/joseluisq/alpine-mysql-client.svg)
+# Docker MySQL 8 Client ![Docker Image Size](https://img.shields.io/docker/image-size/joseluisq/mysql-client/8) ![Docker Image Version](https://img.shields.io/docker/v/joseluisq/mysql-client/8) ![Docker Pulls](https://img.shields.io/docker/pulls/joseluisq/mysql-client.svg)
 
 > [MySQL 8 client](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) for export and import databases easily using Docker.
 
