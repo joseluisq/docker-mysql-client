@@ -105,10 +105,10 @@ ARG ENVE_VERSION=1.4.0
 RUN set -eux \
     && wget -O /tmp/enve.tar.gz \
         "https://github.com/joseluisq/enve/releases/download/v${ENVE_VERSION}/enve_v${ENVE_VERSION}_linux_amd64.tar.gz" \
-	&& tar xzvf /tmp/enve.tar.gz -C /usr/local/bin enve \
-	&& enve -v \
-	&& rm -rf /tmp/enve.tar.gz \
-	&& chmod +x /usr/local/bin/enve \
+    && tar xzvf /tmp/enve.tar.gz -C /usr/local/bin enve \
+    && enve -v \
+    && rm -rf /tmp/enve.tar.gz \
+    && chmod +x /usr/local/bin/enve \
     && true
 
 COPY 8.0/entrypoint.sh /usr/local/bin/docker-entrypoint.sh

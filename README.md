@@ -2,11 +2,11 @@
 
 [![devel](https://github.com/joseluisq/docker-mysql-client/actions/workflows/devel.yml/badge.svg)](https://github.com/joseluisq/docker-mysql-client/actions/workflows/devel.yml) ![Docker Image Size](https://img.shields.io/docker/image-size/joseluisq/mysql-client/8) ![Docker Image Version](https://img.shields.io/docker/v/joseluisq/mysql-client/8) ![Docker Pulls](https://img.shields.io/docker/pulls/joseluisq/mysql-client.svg)
 
-> [MySQL 8 client](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) for export and import databases easily using Docker.
+> [MySQL 8 client](https://dev.mysql.com/doc/r**Note:** efman/8.0/en/programs-client.html) for export and import databases easily using Docker.
 
 This is a __Linux Docker image__ using latest __Debian [11-slim](https://hub.docker.com/_/debian?tab=tags&page=1&name=11-slim)__ ([Bullseye](https://www.debian.org/News/2021/20210814)).
 
-*If you are looking for a **MariaDB Client** then go to [Alpine MySQL Client](https://github.com/joseluisq/alpine-mysql-client) project.*
+*__Note:__ If you are looking for a __MariaDB Client__ then go to [Alpine MySQL Client](https://github.com/joseluisq/alpine-mysql-client) project.*
 
 🐳  View on [Docker Hub](https://hub.docker.com/r/joseluisq/mysql-client/)
 
