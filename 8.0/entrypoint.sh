@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Path: /usr/local/bin/docker-entrypoint.sh
 
