@@ -76,9 +76,9 @@ RUN set -eux \
     && true
 
 ENV MYSQL_MAJOR 8.0
-ENV MYSQL_VERSION 8.0.28-1debian11
+ENV MYSQL_VERSION 8.0.29-1debian11
 
-# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.28-1debian11_amd64.deb
+# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.29-1debian11_amd64.deb
 RUN set -eux \
     && echo 'deb [ signed-by=/etc/apt/keyrings/mysql.gpg ] http://repo.mysql.com/apt/debian/ bullseye mysql-8.0' > /etc/apt/sources.list.d/mysql.list \
     && true
