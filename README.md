@@ -4,7 +4,7 @@
 
 > [MySQL 8 client](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) for export and import databases easily using Docker.
 
-This is a __Linux Docker image__ using latest __Debian [11-slim](https://hub.docker.com/_/debian?tab=tags&page=1&name=11-slim)__ ([Bullseye](https://www.debian.org/News/2021/20210814)).
+This is a __Linux Docker image__ using the latest __Debian [11-slim](https://hub.docker.com/_/debian?tab=tags&page=1&name=11-slim)__ ([Bullseye](https://www.debian.org/News/2021/20210814)).
 
 _**Note:** If you are looking for a **MariaDB Client** then go to [Alpine MySQL Client](https://github.com/joseluisq/alpine-mysql-client) project._
 
@@ -27,7 +27,7 @@ mysqldumpslow
 mysqlshow
 ```
 
-For more details see official [MySQL 8 Client Programs](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) documentation.
+For more details see the official [MySQL 8 Client Programs](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) documentation.
 
 ## Usage
 
@@ -38,13 +38,13 @@ docker run -it --rm joseluisq/mysql-client mysql --version
 
 ## User privileges
 
-- Default user (unprivileged) is `mysql`.
+- The default user (unprivileged) is `mysql`.
 - `mysql` home directory is located at `/home/mysql`.
 - If you want a full privileged user try `root`. E.g append a `--user root` argument to `docker run`.
 
 ## Exporter
 
-`mysql_exporter` is a custom tool which exports a database script using `mysqldump`. Additionally it support gzip compression.
+`mysql_exporter` is a custom tool that exports a database script using `mysqldump`. Additionally, it support gzip compression.
 It can be configured via environment variables or using `.env` file.
 
 ### Setup via environment variables
@@ -74,13 +74,13 @@ DB_ARGS=
 
 **Notes:**
 
-- `DB_EXPORT_GZIP=true`: Compress the sql file using Gzip (optional). If `false` or not defined then the exported file will be a `.sql` file.
-- `DB_ARGS`: can be used in order to pass more `mysqldump` arguments (optional). 
-- An `.env` example file can be found at [./8.0/env/mysql_exporter.env](./8.0/env/mysql_exporter.env)
+- `DB_EXPORT_GZIP=true`: Compress the SQL file using Gzip (optional). If `false` or not defined then the exported file will be a `.sql` file.
+- `DB_ARGS`: can be used to pass more `mysqldump` arguments (optional). 
+- A `.env` example file can be found at [./8.0/env/mysql_exporter.env](./8.0/env/mysql_exporter.env)
 
 ### Export a database using a Docker container
 
-The following Docker commands create a container in order to export a database and then remove such container automatically.
+The following Docker commands create a container to export a database and then remove the container automatically.
 
 Note that `mysql_exporter` supports environment variables or a `.env` file can be passed as an argument.
 
@@ -105,12 +105,12 @@ docker run --rm -it \
 
 __Notes:__
 
-- `--volume $PWD:/home/mysql/sample` specificy a [bind mount directory](https://docs.docker.com/storage/bind-mounts/) from host to container.
-- `$PWD` is just a example host working directory. Use your own path.
+- `--volume $PWD:/home/mysql/sample` specifies a [bind mount [directory](https://docs.docker.com/storage/bind-mounts/) from the host to the container.
+- `$PWD` is just an example host working directory. Use your path.
 - `/home/mysql/` is default home directory user (optional). View [User privileges](#user-privileges) section above.
 - `/home/mysql/sample` is a container directory that Docker will create for us.
-- `--workdir /home/mysql/sample` specificy the working directory used by default inside the container.
-- `production.env` is a custom env file path with the corresponding environment variables passed as argument. That file shoud available in your host working directory. E.g `$PWD` in my case.
+- `--workdir /home/mysql/sample` specifies the working directory used by default inside the container.
+- `production.env` is a custom env file path with the corresponding environment variables passed as arguments. That file should be available in your host working directory. E.g `$PWD` in this case.
 
 ### Export a database using a Docker Compose file
 
@@ -131,7 +131,7 @@ services:
 
 ## Importer
 
-`mysql_importer` is a custom tool which imports a SQL script file (text or Gzip) using `mysql` command.
+`mysql_importer` is a custom tool that imports a SQL script file (text or Gzip) using `mysql` command.
 It can be configured via environment variables or using `.env` file.
 
 ### Setup via environment variables
@@ -161,7 +161,7 @@ DB_ARGS=
 
 ### Import a SQL script via a Docker container
 
-The following Docker commands create a container in order to import a SQL script file to an specific database and removing the container afterwards.
+The following Docker commands create a container to import a SQL script file to a specific database and remove the container afterward.
 
 Note that `mysql_importer` supports environment variables or a `.env` file can be passed as an argument.
 
@@ -186,8 +186,8 @@ docker run --rm -it \
 **Notes:**
 
 - `DB_IMPORT_GZIP=true`: Decompress a dump file using Gzip (optional). If `false` or not defined then the import file will be treated as plain `.sql` file.
-- `DB_ARGS`: can be used in order to pass more `mysql` arguments (optional). 
-- An `.env` example file can be found at [./8.0/env/mysql_importer.env](./8.0/env/mysql_importer.env)
+- `DB_ARGS`: can be used to pass more `mysql` arguments (optional). 
+- A `.env` example file can be found at [./8.0/env/mysql_importer.env](./8.0/env/mysql_importer.env)
 
 ## Contributions
 
