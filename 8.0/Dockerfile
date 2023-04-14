@@ -1,6 +1,6 @@
 # NOTE: Most of the file is borrowed from https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian
 
-FROM debian:11-slim
+FROM debian:11.6-slim
 
 ARG VERSION=0.0.0
 ENV VERSION=${VERSION}
@@ -24,7 +24,7 @@ RUN set -eux \
 
 # add gosu for easy step-down from root
 # https://github.com/tianon/gosu/releases
-ENV GOSU_VERSION 1.14
+ENV GOSU_VERSION 1.16
 
 RUN set -eux \
     && savedAptMark="$(apt-mark showmanual)" \
@@ -35,7 +35,7 @@ RUN set -eux \
     && rm -rf /var/lib/apt/lists/* \
     && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
     && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" \
-    && wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.&& asc" \
+    && wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc" \
     && export GNUPGHOME="$(mktemp -d)" \
     && gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
@@ -76,9 +76,9 @@ RUN set -eux \
     && true
 
 ENV MYSQL_MAJOR 8.0
-ENV MYSQL_VERSION 8.0.30-1debian11
+ENV MYSQL_VERSION 8.0.32-1debian11
 
-# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.30-1debian11_amd64.deb
+# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.32-1debian11_amd64.deb
 RUN set -eux \
     && echo 'deb [ signed-by=/etc/apt/keyrings/mysql.gpg ] http://repo.mysql.com/apt/debian/ bullseye mysql-8.0' > /etc/apt/sources.list.d/mysql.list \
     && true
@@ -100,9 +100,14 @@ RUN set -eux \
     && true
 
 # Include the Enve tool
-ARG ENVE_VERSION=1.4.0
+ARG ENVE_VERSION=1.4.1
 
 RUN set -eux \
+    && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --no-install-recommends \
+        ca-certificates \
+        wget \
+    && rm -rf /var/lib/apt/lists/* \
     && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
     && wget -O /tmp/enve.tar.gz \
         "https://github.com/joseluisq/enve/releases/download/v${ENVE_VERSION}/enve_v${ENVE_VERSION}_linux_$dpkgArch.tar.gz" \
@@ -110,6 +115,8 @@ RUN set -eux \
     && enve -v \
     && rm -rf /tmp/enve.tar.gz \
     && chmod +x /usr/local/bin/enve \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
     && true
 
 COPY 8.0/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
