@@ -40,11 +40,11 @@ docker run -it --rm joseluisq/mysql-client mysql --version
 
 - The default user (unprivileged) is `mysql`.
 - `mysql` home directory is located at `/home/mysql`.
-- If you want a full privileged user try `root`. E.g append a `--user root` argument to `docker run`.
+- If you want a fully privileged user try `root`. E.g append a `--user root` argument to `docker run`.
 
 ## Exporter
 
-`mysql_exporter` is a custom tool that exports a database script using `mysqldump`. Additionally, it support gzip compression.
+`mysql_exporter` is a custom tool that exports a database script using `mysqldump`. Additionally, it supports gzip compression.
 It can be configured via environment variables or using `.env` file.
 
 ### Setup via environment variables
@@ -107,7 +107,7 @@ __Notes:__
 
 - `--volume $PWD:/home/mysql/sample` specifies a [bind mount [directory](https://docs.docker.com/storage/bind-mounts/) from the host to the container.
 - `$PWD` is just an example host working directory. Use your path.
-- `/home/mysql/` is default home directory user (optional). View [User privileges](#user-privileges) section above.
+- `/home/mysql/` is the default home directory user (optional). View the [User privileges](#user-privileges) section above.
 - `/home/mysql/sample` is a container directory that Docker will create for us.
 - `--workdir /home/mysql/sample` specifies the working directory used by default inside the container.
 - `production.env` is a custom env file path with the corresponding environment variables passed as arguments. That file should be available in your host working directory. E.g `$PWD` in this case.
@@ -185,7 +185,7 @@ docker run --rm -it \
 
 **Notes:**
 
-- `DB_IMPORT_GZIP=true`: Decompress a dump file using Gzip (optional). If `false` or not defined then the import file will be treated as plain `.sql` file.
+- `DB_IMPORT_GZIP=true`: Decompress a dump file using Gzip (optional). If `false` or not defined then the import file will be treated as a plain `.sql` file.
 - `DB_ARGS`: can be used to pass more `mysql` arguments (optional). 
 - A `.env` example file can be found at [./8.0/env/mysql_importer.env](./8.0/env/mysql_importer.env)
 
@@ -199,4 +199,4 @@ Feel free to send some [pull request](https://github.com/joseluisq/docker-mysql-
 
 This work is primarily distributed under the terms of both the [MIT license](LICENSE-MIT) and the [Apache License (Version 2.0)](LICENSE-APACHE).
 
-© 2022-present [Jose Quintana](https://git.io/joseluisq)
+© 2022-present [Jose Quintana](https://joseluisq.net)
