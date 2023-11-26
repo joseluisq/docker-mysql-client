@@ -40,7 +40,7 @@ docker run -it --rm joseluisq/mysql-client mysql --version
 
 - The default user (unprivileged) is `mysql`.
 - `mysql` home directory is located at `/home/mysql`.
-- If you want a fully privileged user try `root`. E.g append a `--user root` argument to `docker run`.
+- If you want a fully privileged user try `root`. E.g. append a `--user root` argument to `docker run`.
 
 ## Exporter
 
@@ -105,7 +105,7 @@ docker run --rm -it \
 
 __Notes:__
 
-- `--volume $PWD:/home/mysql/sample` specifies a [bind mount [directory](https://docs.docker.com/storage/bind-mounts/) from the host to the container.
+- `--volume $PWD:/home/mysql/sample` specifies a bind mount [directory](https://docs.docker.com/storage/bind-mounts/) from the host to the container.
 - `$PWD` is just an example host working directory. Use your path.
 - `/home/mysql/` is the default home directory user (optional). View the [User privileges](#user-privileges) section above.
 - `/home/mysql/sample` is a container directory that Docker will create for us.
@@ -161,7 +161,7 @@ DB_ARGS=
 
 ### Import a SQL script via a Docker container
 
-The following Docker commands create a container to import a SQL script file to a specific database and remove the container afterward.
+The following Docker commands create a container to import an SQL script file to a specific database and remove the container afterward.
 
 Note that `mysql_importer` supports environment variables or a `.env` file can be passed as an argument.
 

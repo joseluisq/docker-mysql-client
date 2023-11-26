@@ -1,6 +1,6 @@
 # NOTE: Most of the file is borrowed from https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian
 
-FROM debian:11.7-slim
+FROM debian:11.8-slim
 
 ARG VERSION=0.0.0
 ENV VERSION=${VERSION}
@@ -23,7 +23,7 @@ RUN set -eux \
 
 # add gosu for easy step-down from root
 # https://github.com/tianon/gosu/releases
-ENV GOSU_VERSION 1.16
+ENV GOSU_VERSION 1.17
 
 RUN set -eux \
     && savedAptMark="$(apt-mark showmanual)" \
@@ -75,9 +75,9 @@ RUN set -eux \
     && true
 
 ENV MYSQL_MAJOR 8.0
-ENV MYSQL_VERSION 8.0.34-1debian11
+ENV MYSQL_VERSION 8.0.35-1debian11
 
-# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.34-1debian11_amd64.deb
+# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.35-1debian11_amd64.deb
 RUN set -eux \
     && echo 'deb [ signed-by=/etc/apt/keyrings/mysql.gpg ] http://repo.mysql.com/apt/debian/ bullseye mysql-8.0' > /etc/apt/sources.list.d/mysql.list \
     && true

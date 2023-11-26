@@ -1,5 +1,5 @@
 build:
-	@docker build -t mysql-client:latest -f 8.0/Dockerfile .
+	@docker buildx build --platform='linux/amd64' -t mysql-client:latest -f 8.0/Dockerfile .
 .PHONY: build
 
 HOME_USER ?= $(shell echo $$(id -u $$USER):$$(id -g $$USER))
