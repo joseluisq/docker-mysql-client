@@ -1,6 +1,6 @@
 # NOTE: Most of the file is borrowed from https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian
 
-FROM debian:11.8-slim
+FROM debian:12.5-slim
 
 ARG VERSION=0.0.0
 ENV VERSION=${VERSION}
@@ -65,7 +65,7 @@ RUN set -eux \
 
 RUN set -eux \
 # gpg: key 3A79BD29: public key "MySQL Release Engineering <mysql-build@oss.oracle.com>" imported
-    && key='859BE8D7C586F538430B19C2467B942D3A79BD29' \
+    && key='bca43417c3b485dd128ec6d4b7b3b788a8d3785c' \
     && export GNUPGHOME="$(mktemp -d)" \
     && gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key" \
     && mkdir -p /etc/apt/keyrings \
@@ -75,11 +75,11 @@ RUN set -eux \
     && true
 
 ENV MYSQL_MAJOR 8.0
-ENV MYSQL_VERSION 8.0.35-1debian11
+ENV MYSQL_VERSION 8.0.36-1debian12
 
-# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.35-1debian11_amd64.deb
+# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.36-1debian12_amd64.deb
 RUN set -eux \
-    && echo 'deb [ signed-by=/etc/apt/keyrings/mysql.gpg ] http://repo.mysql.com/apt/debian/ bullseye mysql-8.0' > /etc/apt/sources.list.d/mysql.list \
+    && echo 'deb [ signed-by=/etc/apt/keyrings/mysql.gpg ] http://repo.mysql.com/apt/debian/ bookworm mysql-8.0' > /etc/apt/sources.list.d/mysql.list \
     && true
 
 # the "/var/lib/mysql" stuff here is because the mysql-server postinst doesn't have an explicit way to disable the mysql_install_db codepath besides having a database already "configured" (ie, stuff in /var/lib/mysql/mysql)
@@ -99,7 +99,7 @@ RUN set -eux \
     && true
 
 # Include the Enve tool
-ARG ENVE_VERSION=1.4.1
+ARG ENVE_VERSION=1.5.0
 
 RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get update -qq \

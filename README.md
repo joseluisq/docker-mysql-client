@@ -4,7 +4,7 @@
 
 > [MySQL 8 client](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) for export and import databases easily using Docker.
 
-This is a __Linux Docker image__ using the latest __Debian [11-slim](https://hub.docker.com/_/debian?tab=tags&page=1&name=11-slim)__ ([Bullseye](https://www.debian.org/News/2021/20210814)).
+This is a __Linux Docker image__ using the latest __Debian [12-slim](https://hub.docker.com/_/debian/tags?page=1&name=12-slim)__ ([Bookworm](https://www.debian.org/News/2023/20230610)).
 
 _**Note:** If you are looking for a **MariaDB Client** then go to [Alpine MySQL Client](https://github.com/joseluisq/alpine-mysql-client) project._
 
@@ -13,18 +13,19 @@ _**Note:** If you are looking for a **MariaDB Client** then go to [Alpine MySQL 
 ## MySQL 8 Client programs
 
 ```sh
+myisam_ftdump
 mysql
-mysql_find_rows
-mysql_waitpid
+mysql_config_editor
+mysql_exporter
+mysql_importer
 mysqladmin
-mysqldump
-mysqlimport
-mysql-export
-mysql_fix_extensions
-mysqlaccess
 mysqlcheck
+mysqldump
 mysqldumpslow
+mysqlimport
+mysqlpump
 mysqlshow
+mysqlslap
 ```
 
 For more details see the official [MySQL 8 Client Programs](https://dev.mysql.com/doc/refman/8.0/en/programs-client.html) documentation.
@@ -33,7 +34,7 @@ For more details see the official [MySQL 8 Client Programs](https://dev.mysql.co
 
 ```sh
 docker run -it --rm joseluisq/mysql-client mysql --version
-# mysql  Ver 8.0.28 for Linux on x86_64 (MySQL Community Server - GPL)
+# mysql  Ver 8.0.36 for Linux on x86_64 (MySQL Community Server - GPL)
 ```
 
 ## User privileges
