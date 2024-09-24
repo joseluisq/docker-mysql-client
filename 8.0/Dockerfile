@@ -1,6 +1,6 @@
 # NOTE: Most of the file is borrowed from https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian
 
-FROM debian:12.5-slim
+FROM debian:12.7-slim
 
 ARG VERSION=0.0.0
 ENV VERSION=${VERSION}
@@ -75,9 +75,9 @@ RUN set -eux \
     && true
 
 ENV MYSQL_MAJOR 8.0
-ENV MYSQL_VERSION 8.0.36-1debian12
+ENV MYSQL_VERSION 8.0.39-1debian12
 
-# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.36-1debian12_amd64.deb
+# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.39-1debian12_amd64.deb
 RUN set -eux \
     && echo 'deb [ signed-by=/etc/apt/keyrings/mysql.gpg ] http://repo.mysql.com/apt/debian/ bookworm mysql-8.0' > /etc/apt/sources.list.d/mysql.list \
     && true
@@ -99,7 +99,7 @@ RUN set -eux \
     && true
 
 # Include the Enve tool
-ARG ENVE_VERSION=1.5.0
+ARG ENVE_VERSION=1.5.1
 
 RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
