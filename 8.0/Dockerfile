@@ -1,6 +1,6 @@
 # NOTE: Most of the file is borrowed from https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian
 
-FROM debian:12.7-slim
+FROM debian:12.9-slim
 
 ARG VERSION=0.0.0
 ENV VERSION=${VERSION}
@@ -51,6 +51,7 @@ RUN set -eux \
 RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
     && DEBIAN_FRONTEND=noninteractive apt-get install -qq -y --no-install-recommends \
+        bzip2 \
         openssl \
 # FATAL ERROR: please install the following Perl modules before executing /usr/local/mysql/scripts/mysql_install_db:
 # File::Basename
@@ -63,21 +64,24 @@ RUN set -eux \
     && rm -rf /var/lib/apt/lists/* \
     && true
 
-RUN set -eux \
-# gpg: key 3A79BD29: public key "MySQL Release Engineering <mysql-build@oss.oracle.com>" imported
-    && key='bca43417c3b485dd128ec6d4b7b3b788a8d3785c' \
-    && export GNUPGHOME="$(mktemp -d)" \
-    && gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key" \
-    && mkdir -p /etc/apt/keyrings \
-    && gpg --batch --export "$key" > /etc/apt/keyrings/mysql.gpg \
-    && gpgconf --kill all \
-    && rm -rf "$GNUPGHOME" \
+RUN set -eux; \
+# pub   rsa4096 2023-10-23 [SC] [expires: 2025-10-22]
+#       BCA4 3417 C3B4 85DD 128E  C6D4 B7B3 B788 A8D3 785C
+# uid           [ unknown] MySQL Release Engineering <mysql-build@oss.oracle.com>
+# sub   rsa4096 2023-10-23 [E] [expires: 2025-10-22]
+	key='BCA4 3417 C3B4 85DD 128E C6D4 B7B3 B788 A8D3 785C'; \
+	export GNUPGHOME="$(mktemp -d)"; \
+	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key"; \
+	mkdir -p /etc/apt/keyrings; \
+	gpg --batch --export "$key" > /etc/apt/keyrings/mysql.gpg; \
+	gpgconf --kill all; \
+	rm -rf "$GNUPGHOME" \
     && true
 
 ENV MYSQL_MAJOR 8.0
-ENV MYSQL_VERSION 8.0.39-1debian12
+ENV MYSQL_VERSION 8.0.41-1debian12
 
-# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.39-1debian12_amd64.deb
+# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.41-1debian12_amd64.deb
 RUN set -eux \
     && echo 'deb [ signed-by=/etc/apt/keyrings/mysql.gpg ] http://repo.mysql.com/apt/debian/ bookworm mysql-8.0' > /etc/apt/sources.list.d/mysql.list \
     && true
