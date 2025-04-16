@@ -9,18 +9,18 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       -
         name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
       -
         name: Docker meta
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: joseluisq/mysql-client
           tags: |
