@@ -11,9 +11,9 @@ XDB_EXPORT_GZIP="$DB_EXPORT_GZIP"
 XDB_EXPORT=
 
 # Required env variables
-if [[ -z "$DB_NAME" ]]; then "ERROR: `DB_NAME` env variable is required."; exit 1; fi
-if [[ -z "$DB_USERNAME" ]]; then "ERROR: `DB_USERNAME` env variable is required."; exit 1; fi
-if [[ -z "$DB_PASSWORD" ]]; then "ERROR: `DB_PASSWORD` env variable is required."; exit 1; fi
+if [[ -z "$DB_NAME" ]]; then echo "ERROR: 'DB_NAME' env variable is required."; exit 1; fi
+if [[ -z "$DB_USERNAME" ]]; then echo "ERROR: 'DB_USERNAME' env variable is required."; exit 1; fi
+if [[ -z "$DB_PASSWORD" ]]; then echo "ERROR: 'DB_PASSWORD' env variable is required."; exit 1; fi
 
 # Optional env variables
 if [[ -z "$XDB_PROTO" ]]; then XDB_PROTO="tcp"; fi
