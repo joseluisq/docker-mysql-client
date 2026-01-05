@@ -1,12 +1,12 @@
 # NOTE: Most of the file is borrowed from https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian
 
-FROM debian:12.11-slim
+FROM debian:12.12-slim
 
 ARG VERSION=0.0.0
 
-# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.43-1debian12_amd64.de
+# https://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/mysql-client_8.0.44-1debian12_amd64.deb
 ARG MYSQL_MAJOR=8.0
-ARG MYSQL_VERSION=8.0.43-1debian12
+ARG MYSQL_VERSION=8.0.44-1debian12
 
 ENV VERSION=${VERSION}
 ENV MYSQL_MAJOR=${MYSQL_MAJOR}
@@ -30,7 +30,7 @@ RUN set -eux \
 
 # add gosu for easy step-down from root
 # https://github.com/tianon/gosu/releases
-ENV GOSU_VERSION=1.17
+ENV GOSU_VERSION=1.19
 
 RUN set -eux \
     && savedAptMark="$(apt-mark showmanual)" \
@@ -107,7 +107,7 @@ RUN set -eux \
     && true
 
 # Include the Enve tool
-ARG ENVE_VERSION=1.5.1
+ARG ENVE_VERSION=1.6.0
 
 RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get update -qq \
