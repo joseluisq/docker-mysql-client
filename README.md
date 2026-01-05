@@ -34,7 +34,7 @@ For more details see the official [MySQL 8 Client Programs](https://dev.mysql.co
 
 ```sh
 docker run -it --rm joseluisq/mysql-client mysql --version
-# mysql  Ver 8.0.43 for Linux on x86_64 (MySQL Community Server - GPL)
+# mysql  Ver 8.0.44 for Linux on x86_64 (MySQL Community Server - GPL)
 ```
 
 ## User privileges
@@ -95,7 +95,7 @@ docker run --rm -it \
 
 # MySQL 8 Client - Exporter
 # =========================
-# mysqldump  Ver 8.0.43 for Linux on x86_64 (MySQL Community Server - GPL)
+# mysqldump  Ver 8.0.44 for Linux on x86_64 (MySQL Community Server - GPL)
 
 # Exporting database `mydb` into a SQL script file...
 # Output file: database_name.sql (SQL Text)
@@ -176,7 +176,7 @@ docker run --rm -it \
 
 # MySQL 8 Client - Importer
 # =========================
-# mysql  Ver 8.0.43 for Linux on x86_64 (MySQL Community Server - GPL)
+# mysql  Ver 8.0.44 for Linux on x86_64 (MySQL Community Server - GPL)
 
 # Importing a SQL script file into database `mydb`...
 # Input file: database_name.sql (4.0K / SQL Text)
